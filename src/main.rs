@@ -1,8 +1,7 @@
 use std::collections::HashMap;
 
-
 fn main() {
-    ////// scala /////// 
+    ////// scala ///////
     let unsigned: u8 = 10;
     let signed: i8 = -15;
     let float: f32 = 1.2;
@@ -23,16 +22,14 @@ fn main() {
     //print the entire structure of arr
     println!("{:?}", other_arr);
 
-
     // tuple can hold elements of different types and uses dot notationk
 
     // can be stricly declared
     let tuple: (u8, bool, f32) = (5, true, 2.1);
-    
     // or rust can infer the types
     let tuple2 = (3, 5);
 
-    println!("first {}, second {}, third {}",tuple.0, tuple.1, tuple.2);
+    println!("first {}, second {}, third {}", tuple.0, tuple.1, tuple.2);
     println!("{:?}", tuple2);
 
     let (a, b, c) = tuple;
@@ -53,7 +50,6 @@ fn main() {
     string.push('1');
     string.push_str("! yo");
     string = string.replace("Hello", "Later");
-    
     println!("{}", string);
 
     //////// control flow ////////
@@ -67,7 +63,6 @@ fn main() {
         println!("is 0");
     }
 
-
     // for loop
     for i in 0..6 {
         println!("{}", i);
@@ -80,7 +75,7 @@ fn main() {
         i += 1;
         if i == 3 {
             println!("exit");
-            break
+            break;
         }
     }
 
@@ -90,14 +85,13 @@ fn main() {
         0 => println!("0"),
         1 | 2 => println!("1, 2"),
         3..=4 => println!("3, 4"),
-        _=> println!("default")
+        _ => println!("default"),
     }
 
-    
     // create an instance of a struct
     // a string slice is actually needed but not allowed so a new string must be created and passed in
     let name = String::from("rocket dog");
-    let dog = Dog {name: name, age: 3};
+    let dog = Dog { name: name, age: 3 };
 
     // struct method call
     dog.bark_name();
@@ -109,7 +103,7 @@ fn main() {
     // call the enum class created, use of double colon to reference the field
     let a: MyEnum = MyEnum::A;
     let b: MyEnum = MyEnum::B(3);
-    let c: MyEnum = MyEnum::C{x:10, y:20};
+    let c: MyEnum = MyEnum::C { x: 10, y: 20 };
     println!("{:?}", a);
     println!("{:?}", b);
     println!("{:?}", c);
@@ -119,13 +113,13 @@ fn main() {
         println!("{}", val);
     }
 
-    if let MyEnum::C{x, y} = c {
+    if let MyEnum::C { x, y } = c {
         println!("{} {}", x, y);
     }
 
     // vector same as an array except its size can be dynamically altered
     let mut vec: Vec<i64> = vec![1, 2, 3, 4, 5]; // use of a rust provided macro
-    // get length
+                                                 // get length
     vec.len();
     // access values by index bracket notation
     vec[0];
@@ -152,13 +146,11 @@ fn main() {
 
     match map.get(&2) {
         Some(str) => println!("{}", str),
-        _=> println!("Dosen't exist in the map"),
+        _ => println!("Dosen't exist in the map"),
     }
 
     map.remove(&0);
     println!("{:?}", map);
-
-
 
     // option
     let divide1: Option<i32> = divide(4, 2);
@@ -170,7 +162,6 @@ fn main() {
 
     // unwrapping a None variant will panic (throw exception)
     // println!("{:?} unwraps to {}", divide2, divide2.unwrap());
-
 
     // result
     let divide = divide(4, 2);
@@ -199,7 +190,7 @@ pub fn is_even(num: u8) -> bool {
 // structs (similar to classes)
 struct Dog {
     name: String,
-    age: u8
+    age: u8,
 }
 
 // to add a method to the struct use impl keyword
@@ -208,7 +199,6 @@ impl Dog {
         println!("{}", self.name);
     }
 }
-
 
 // to use the trait
 impl Animal for Dog {
@@ -231,14 +221,13 @@ trait Animal {
 enum MyEnum {
     A,
     B(i32),
-    C {x: i32, y: i32}
+    C { x: i32, y: i32 },
 }
-
 
 // options
 fn divide(dividend: i32, divisor: i32) -> Option<i32> {
     if dividend % divisor != 0 {
-        None 
+        None
     } else {
         Some(dividend / divisor)
     }
@@ -249,7 +238,7 @@ fn divide(dividend: i32, divisor: i32) -> Option<i32> {
 // enum with attribute used to define an error
 #[derive(Debug)]
 enum MyError {
-    Error1
+    Error1,
 }
 
 // Ok value wrapper that contains a value
